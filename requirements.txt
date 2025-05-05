@@ -1,0 +1,4 @@
+# Dependencies for the project
+tkinter
+Matplotlib
+JSON
