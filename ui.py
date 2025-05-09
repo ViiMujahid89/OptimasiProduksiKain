@@ -76,7 +76,8 @@ class OptimasiApp(tk.Tk):
         canvas_frame.pack(fill="both", expand=True)
 
         canvas = tk.Canvas(canvas_frame, bg="#f0f0f0")
-        scrollbar = ttk.Scrollbar(canvas_frame, orient="vertical", command=canvas.yview)
+        scrollbar_y = ttk.Scrollbar(canvas_frame, orient="vertical", command=canvas.yview)
+        scrollbar_x = ttk.Scrollbar(canvas_frame, orient="horizontal", command=canvas.xview)
         scrollable_frame = ttk.Frame(canvas)
 
         scrollable_frame.bind(
@@ -85,10 +86,11 @@ class OptimasiApp(tk.Tk):
         )
 
         canvas.create_window((0, 0), window=scrollable_frame, anchor="nw")
-        canvas.configure(yscrollcommand=scrollbar.set)
+        canvas.configure(yscrollcommand=scrollbar_y.set, xscrollcommand=scrollbar_x.set)
 
         canvas.pack(side="left", fill="both", expand=True)
-        scrollbar.pack(side="right", fill="y")
+        scrollbar_y.pack(side="right", fill="y")
+        scrollbar_x.pack(side="bottom", fill="x")
 
         # Main frame untuk UI
         main_frame = ttk.Frame(scrollable_frame)
